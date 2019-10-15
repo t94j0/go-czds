@@ -7,7 +7,7 @@ import (
 	czds "github.com/t94j0/go-czds"
 )
 
-func ExampleCZDS_DownloadAll() {
+func Example() {
 	// Create CZDS object with username and password
 	icann := czds.New("example", "password")
 	// Get access token
