@@ -1,4 +1,4 @@
-package main
+package czds
 
 // CZDS is the base CZDS object
 type CZDS struct {

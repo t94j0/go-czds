@@ -1,4 +1,4 @@
-package main_test
+package czds_test
 
 import (
 	"bytes"
