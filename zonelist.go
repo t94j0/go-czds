@@ -45,7 +45,7 @@ func (zl ZoneList) Zones() []string {
 	return cutList
 }
 
-// DownloadZoneReaders downloads all zone files and returns a multireader with all zonefiles at the same time
+// DownloadZoneReadersThreaded downloads all zone files and returns a multireader with all zonefiles at the same time
 func (c *CZDS) DownloadZoneReadersThreaded(zl ZoneList, dir, fileFormat string, threads int) error {
 	wp := workerpool.New(threads)
 
@@ -62,6 +62,7 @@ func (c *CZDS) DownloadZoneReadersThreaded(zl ZoneList, dir, fileFormat string, 
 	return nil
 }
 
+// DownloadZoneReaders applies DownloadZoneReadersThreaded with one thread
 func (c *CZDS) DownloadZoneReaders(zl ZoneList, dir, fileFormat string) error {
 	return c.DownloadZoneReadersThreaded(zl, dir, fileFormat, 1)
 }
@@ -82,7 +83,7 @@ func (c *CZDS) makeZoneRequest() (*http.Response, error) {
 	return resp, nil
 }
 
-// GetZoneLinks returns all TLD zones available to an access token
+// ZoneList returns all TLD zones available to an access token
 func (c *CZDS) ZoneList() (ZoneList, error) {
 	if c.accessToken == "" {
 		return ZoneList{}, ErrMustRefresh

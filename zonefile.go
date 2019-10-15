@@ -11,10 +11,16 @@ import (
 	"github.com/pkg/errors"
 )
 
+// ErrZoneUnavailable is returned when the zone exists, but the supplied user account does not have access to it
 var ErrZoneUnavailable = errors.New("Zone unavailable to you")
+
+// ErrZoneNotExist is returned when the requested zone file does not exist
 var ErrZoneNotExist = errors.New("Zone file does not exist")
+
+// ErrTOC is returned when the user must accept ICANN CZDS terms and conditions before making a request
 var ErrTOC = errors.New("User must accept ICANN CZDS terms and conditions")
 
+// ZoneFile is an object which contains the zone file information
 type ZoneFile struct {
 	err    error
 	tld    string

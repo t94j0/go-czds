@@ -1,5 +1,6 @@
 package main
 
+// CZDS is the base CZDS object
 type CZDS struct {
 	AuthURL     string
 	BaseURL     string

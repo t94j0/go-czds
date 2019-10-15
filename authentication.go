@@ -10,11 +10,19 @@ import (
 	"github.com/pkg/errors"
 )
 
+// DefaultAuthURL is the default ICANN authentication URL
 const DefaultAuthURL = "https://account-api.icann.org/api/authenticate"
+
+// DefaultBaseURL is the default ICANN CZDS base URL for getting information about zone files
 const DefaultBaseURL = "https://czds-api.icann.org"
 
+// ErrMustRefresh is returned as an error when the RefreshAccessToken function must be run again
 var ErrMustRefresh = errors.New("Must refresh access token")
+
+// ErrIncorrectCredentials is returned when the submitted ICANN credentials are incorrect
 var ErrIncorrectCredentials = errors.New("ICANN Credentials incorrect")
+
+// ErrManyAuth is returned when one has submitted too many authentication requests
 var ErrManyAuth = errors.New("Too many authentications too quickly")
 
 // authData creates a JSON object with the username and password authentication data
